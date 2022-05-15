@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <title>Schedule A Time</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <div >
+        <h1>Meetings:</h1>
+        <div>
+            <%- itemsTable %>
+        </div>
+
+        <br>
+     <button onclick="document.location = '/'" >HOME</button>
+   
+</div>
+</body>
+<script>
+    var confirm = function(id) {
+        console.log(id)
+			const requestOptions = {
+				method: 'post',
+				mode: 'cors',
+				headers: { "Content-Type": "application/json" },
+			};
+			fetch(`/changeMeeting/${id}`, requestOptions).then(() => {
+				window.location.reload();
+                console.log('hi')
+			})
+    }
+</script>
+</html>

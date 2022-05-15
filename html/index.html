@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <title>Rahul's Appointments</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <div >
+    <h1>Schedule a Meeting with Rahul</h1>
+    <div class="list">
+    <h2>Meetings</h2>
+    <a href="/schedule">Schedule</a>
+    
+
+    <h2>Admin</h2>
+    <div id="admin" style="display:none;">
+        
+        <form action="/adminViewProcess" method="post">
+            <button type="sumbit" >View Meetings</button>
+        </form>
+        <br>
+        <form action="/processAdminRemove" method="post" id="form">
+            <button type="sumbit" >Remove all meetings</button>
+        </form>
+        <br>
+        <button type="button" onclick="logOut()">Log Out</button>
+        
+    </div>
+    <div id="nonAdmin">
+        <input type="text" id="key" placeholder="Key">
+        <button type="button" onclick="checkLogin()">Login</button>
+    </div>
+</div>
+   
+</div>
+<script>
+    var checkLogin = function() {
+        if (document.getElementById('key').value == '1') {
+            document.getElementById('nonAdmin').setAttribute('style', 'display:none;')
+            document.getElementById('admin').setAttribute('style', '')
+            document.getElementById('key').value = ''
+        } else {
+            window.alert('WRONG KEY')
+        }
+    }
+    var logOut = function() {
+        document.getElementById('nonAdmin').setAttribute('style', '')
+            document.getElementById('admin').setAttribute('style', 'display:none;')
+    }
+
+</script>
+<script>
+    document.getElementById('form').onsubmit = function (e) {
+		e.preventDefault();
+		if (window.confirm("Are you sure you want to remove all meetings?") == true) {
+            document.getElementById('form').submit()
+        } else {
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
